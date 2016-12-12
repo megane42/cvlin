@@ -26,7 +26,7 @@ func TestRun_versionFlag(t *testing.T) {
 func TestRun_ruleFlag(t *testing.T) {
 	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
 	cli := &CLI{outStream: outStream, errStream: errStream}
-	args := strings.Split("./cvlin --rule example/rule.csv example/subject.csv", " ")
+	args := strings.Split("./cvlin --rule example/rule.toml example/subject.csv", " ")
 
 	status := cli.Run(args)
 	if status != ExitCodeOK {

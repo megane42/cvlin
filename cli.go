@@ -47,14 +47,14 @@ func (cli *CLI) Run(args []string) int {
 	}
 
 	// Load rule file
-	rule, err := cvlin.Parse(rulePath)
+	rule, err := cvlin.LoadRule(rulePath)
 	if err != nil {
 		fmt.Fprintf(cli.errStream, "%s\n", err.Error())
 		return ExitCodeError
 	}
 
 	// Load subject file
-	subject, err := cvlin.Parse(flags.Arg(0))
+	subject, err := cvlin.LoadSubject(flags.Arg(0))
 	if err != nil {
 		fmt.Fprintf(cli.errStream, "%s\n", err.Error())
 		return ExitCodeError

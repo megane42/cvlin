@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func Parse (path string) ([][]string, error) {
+func LoadSubject(path string) ([][]string, error) {
 
 	file, err := os.Open(path)
 	if err != nil {
