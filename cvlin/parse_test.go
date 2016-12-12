@@ -12,7 +12,7 @@ func TestParse(t *testing.T) {
 	res, err := Parse(path)
 
 	if !(reflect.DeepEqual(res, expect) && err == nil) {
-		t.Errorf("Failed to load and parse csv. result: %d, error: %s", res, err)
+		t.Errorf("Failed to load and parse csv. result: %s, error: %s", res, err)
 	}
 }
 
@@ -22,7 +22,7 @@ func TestParse_LoadError(t *testing.T) {
 	res, err := Parse(path)
 
 	if !(res == nil && err != nil) {
-		t.Errorf("Failed to raise error properly. result: %d, error: %s", res, err)
+		t.Errorf("Failed to raise error properly. result: %s, error: %s", res, err)
 	}
 }
 
@@ -32,6 +32,6 @@ func TestParse_ParseError(t *testing.T) {
 	res, err := Parse(path)
 
 	if !(res == nil && err != nil) {
-		t.Errorf("Failed to raise error properly. result: %d, error: %s", res, err)
+		t.Errorf("Failed to raise error properly. result: %s, error: %s", res, err)
 	}
 }

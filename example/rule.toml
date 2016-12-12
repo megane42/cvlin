@@ -1,0 +1,9 @@
+[id]
+notnull = true
+
+[name]
+pattern = "Mr*"
+
+[point]
+pattern = "[0-9]"
+notnull = true
