@@ -14,6 +14,7 @@ func Parse (path string) ([][]string, error) {
 	defer file.Close()
 
 	reader := csv.NewReader(file)
+	reader.Comment = '#'
 	data, err := reader.ReadAll()
 	if err != nil {
 		return nil, err

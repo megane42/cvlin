@@ -1,9 +1,9 @@
 [id]
-notnull = true
+pattern = "A0[0-9]"
 
 [name]
-pattern = "Mr*"
+notnull = true
 
 [point]
-pattern = "[0-9]"
+pattern = "^[0-9]+$"
 notnull = true

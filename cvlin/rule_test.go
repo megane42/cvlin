@@ -8,8 +8,8 @@ import (
 func TestLoadRule(t *testing.T) {
 	path := "../example/rule.toml"
 	expect := map[string]rule {
-		"id"    : {Pattern: "*",     Notnull: true},
-		"name"  : {Pattern: "Mr*",   Notnull: false},
+		"id"    : {Pattern: "A0*",   Notnull: false},
+		"name"  : {Pattern: "*",     Notnull: true},
 		"point" : {Pattern: "[0-9]", Notnull: true},
 	}
 

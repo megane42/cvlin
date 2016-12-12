@@ -6,8 +6,8 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	path := "../example/rule.csv"
-	expect := [][]string{{"aaa", "000"}, {"bbb", "111"}}
+	path := "../example/subject.csv"
+	expect := [][]string{{"A01", "Shibuya Rin", "100"}, {"A02", "Sakuma Mayu", "200"}}
 
 	res, err := Parse(path)
 
