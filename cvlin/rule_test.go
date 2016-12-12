@@ -16,7 +16,7 @@ func TestLoadRule(t *testing.T) {
 	res, err := LoadRule(path)
 
 	if !(err == nil) {
-		t.Errorf("Failed to parse toml (some error occurs). %s", err)
+		t.Errorf("Failed to parse toml (unexpected error occurs). %s", err)
 	}
 
 	// This always returns false. Why?
