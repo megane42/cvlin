@@ -14,9 +14,10 @@ func Run(rulePath, subjectPath string) (bool, error) {
 	return validate(rule, subj)
 }
 
-func validate(rule map[string]rule, subject [][]string) (bool, error) {
+func validate(rule []rule, subject [][]string) (bool, error) {
 	for _, row := range subject {
 		// TODO
+		_ = row
 	}
 	return false, nil
 }

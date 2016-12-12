@@ -5,10 +5,10 @@ import (
 )
 
 func TestValidate(t *testing.T) {
-	rule := map[string]rule {
-		"id"    : {Pattern: "A0[0-9]",  Notnull: false},
-		"name"  : {Pattern: "*",        Notnull: true},
-		"point" : {Pattern: "^[0-9]+$", Notnull: true},
+	rule := []rule {
+		{Pattern: "A0[0-9]",  Notnull: false},
+		{Pattern: "*",        Notnull: true},
+		{Pattern: "^[0-9]+$", Notnull: true},
 	}
 
 	subject := [][]string{{"A01", "Shibuya Rin", "100"}, {"A02", "Sakuma Mayu", "200"}}
