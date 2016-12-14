@@ -9,8 +9,9 @@ import (
 
 // Exit codes are int values that represent an exit code for a particular error.
 const (
-	ExitCodeOK    int = 0
-	ExitCodeError int = 1 + iota
+	ExitCodeOK      int = 0
+	ExitCodeError   int = 1 + iota
+	ExitCodeInvalid
 )
 
 // CLI is the command line object
@@ -46,23 +47,16 @@ func (cli *CLI) Run(args []string) int {
 		return ExitCodeOK
 	}
 
-	// Load rule file
-	rule, err := cvlin.LoadRule(rulePath)
+	// Validate CSV
+	subjectPath := flags.Arg(0)
+	valid, err := cvlin.Run(rulePath, subjectPath)
 	if err != nil {
-		fmt.Fprintf(cli.errStream, "%s\n", err.Error())
 		return ExitCodeError
 	}
 
-	// Load subject file
-	subject, err := cvlin.LoadSubject(flags.Arg(0))
-	if err != nil {
-		fmt.Fprintf(cli.errStream, "%s\n", err.Error())
-		return ExitCodeError
+	if !valid {
+		return ExitCodeInvalid
 	}
-
-	// TOOD: Varidate subject by rule
-	_ = rule
-	_ = subject
 
 	return ExitCodeOK
 }

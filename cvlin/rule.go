@@ -23,7 +23,7 @@ func LoadRule(path string) ([]rule, error) {
 			// What I really want to do here is just `rulemap[i].Pattern = "*"`, but it's not allowed.
 			// http://stackoverflow.com/questions/32751537/
 			// http://stackoverflow.com/questions/15984423/
-			rulemap[i] = rule{Pattern: "*", Notnull: rulemap[i].Notnull}
+			rulemap[i] = rule{Pattern: ".*", Notnull: rulemap[i].Notnull}
 		}
 	}
 

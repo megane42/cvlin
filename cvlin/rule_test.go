@@ -9,7 +9,7 @@ func TestLoadRule(t *testing.T) {
 	path := "../example/rule.toml"
 	expect := []rule {
 		{Pattern: "A0[0-9]",  Notnull: false},
-		{Pattern: "*",        Notnull: true},
+		{Pattern: ".*",       Notnull: true},
 		{Pattern: "^[0-9]+$", Notnull: true},
 	}
 
