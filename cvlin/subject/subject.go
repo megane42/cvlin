@@ -3,13 +3,14 @@ package subject
 import (
 	"encoding/csv"
 	"os"
+	"github.com/pkg/errors"
 )
 
 func LoadSubject(path string) ([][]string, error) {
 
 	file, err := os.Open(path)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Failed to load csv file (load error)")
 	}
 	defer file.Close()
 
@@ -17,7 +18,7 @@ func LoadSubject(path string) ([][]string, error) {
 	reader.Comment = '#'
 	data, err := reader.ReadAll()
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Failed to load csv file (parse error)")
 	}
 
 	return data, nil

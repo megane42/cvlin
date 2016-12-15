@@ -49,14 +49,12 @@ func (cli *CLI) Run(args []string) int {
 
 	// Validate CSV
 	subjectPath := flags.Arg(0)
-	valid, err := cvlin.Run(rulePath, subjectPath)
+	_, err := cvlin.Run(rulePath, subjectPath)
 	if err != nil {
+		fmt.Fprintf(cli.errStream, "%v\n", err)
 		return ExitCodeError
 	}
 
-	if !valid {
-		return ExitCodeInvalid
-	}
-
+	fmt.Fprintf(cli.outStream, "Valid.\n")
 	return ExitCodeOK
 }

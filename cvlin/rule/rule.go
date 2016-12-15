@@ -2,6 +2,7 @@ package rule
 
 import (
 	"github.com/BurntSushi/toml"
+	"github.com/pkg/errors"
 )
 
 func LoadRule(path string) ([]string, error) {
@@ -9,7 +10,7 @@ func LoadRule(path string) ([]string, error) {
 
 	meta, err := toml.DecodeFile(path, &rulemap)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "Failed to load rule file")
 	}
 
 	return convertToOrderedSlice(rulemap, meta.Keys()), nil
