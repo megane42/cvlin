@@ -1,4 +1,4 @@
-package cvlin
+package subject
 
 import (
 	"encoding/csv"

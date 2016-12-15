@@ -1,4 +1,4 @@
-package cvlin
+package subject
 
 import (
 	"testing"
@@ -6,8 +6,8 @@ import (
 )
 
 func TestLoadSubject(t *testing.T) {
-	path := "../example/subject.csv"
-	expect := [][]string{{"A01", "Shibuya Rin", "100"}, {"A02", "Sakuma Mayu", "200"}}
+	path := "../../example/subject.csv"
+	expect := [][]string{{"A01", "Shibuya Rin", "100"}, {"A02", "", "200"}}
 
 	res, err := LoadSubject(path)
 

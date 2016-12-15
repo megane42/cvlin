@@ -1,9 +1,3 @@
-[id]
-pattern = "A0[0-9]"
-
-[name]
-notnull = true
-
-[point]
-pattern = "^[0-9]+$"
-notnull = true
+id    = "A0[0-9]"
+name  = ".*"
+point = "^\\d+$"

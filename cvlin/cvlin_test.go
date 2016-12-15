@@ -5,15 +5,11 @@ import (
 )
 
 func TestValidate(t *testing.T) {
-	rule := []rule {
-		{Pattern: "A0[0-9]",  Notnull: false},
-		{Pattern: ".*",       Notnull: true},
-		{Pattern: "^[0-9]+$", Notnull: true},
-	}
+	rule := []string {`A0[0-9]`, `.*`, `^\d+$`}
 
 	subject := [][]string {
 		{"A01", "Shibuya Rin", "100"},
-		{"A02", "Sakuma Mayu", "200"},
+		{"A02", "", "200"},
 	}
 
 	res, err := validate(rule, subject)
@@ -29,14 +25,10 @@ func TestValidate(t *testing.T) {
 
 func TestValidate_InvalidNumOfRules(t *testing.T) {
 	// 2 rules for 3 cols
-	rule := []rule {
-		{Pattern: "A0[0-9]",  Notnull: false},
-		{Pattern: ".*",       Notnull: true},
-	}
-
+	rule := []string {`A0[0-9]`, `.*`}
 	subject := [][]string {
 		{"A01", "Shibuya Rin", "100"},
-		{"A02", "Sakuma Mayu", "200"},
+		{"A02", "", "200"},
 	}
 
 	res, err := validate(rule, subject)
