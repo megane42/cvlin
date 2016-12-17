@@ -24,7 +24,7 @@ A02,,200
 
 ```shell
 # specify rule file with -r or --rule option
-cvlin -r rule.toml subject.csv
+$ cvlin -r rule.toml subject.csv
 ```
 
 ## Install
@@ -43,7 +43,7 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
     * The left-hand side is the name of column. This is just for documentation.
     * The right-hand side is the regexp which the correspond column should satisfy.
 
-* Regexp is read as "*string literal*", not as "raw string literal". So you must escape all special chars.
+* Regexp is read as "**string literal**", not as "raw string literal". So you must escape all special chars.
     * good: `\\d`
     * bad: `\d`
 
