@@ -1,0 +1,5 @@
+# This rule is used when you invoke cvlin without -r option.
+# If you edit this file, execute follow command to apply (install go-bindata beforehand).
+#
+#   go-bindata --pkg cvlin -o cvlin/bindata.go default_rules.toml
+#

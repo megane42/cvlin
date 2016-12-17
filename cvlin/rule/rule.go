@@ -5,12 +5,12 @@ import (
 	"github.com/pkg/errors"
 )
 
-func LoadRule(path string) ([]string, error) {
+func LoadRule(tomlStr string) ([]string, error) {
 	var rulemap map[string]string
 
-	meta, err := toml.DecodeFile(path, &rulemap)
+	meta, err := toml.Decode(tomlStr, &rulemap)
 	if err != nil {
-		return nil, errors.Wrap(err, "Failed to load rule file")
+		return nil, errors.Wrap(err, "Failed to parse rule file")
 	}
 
 	return convertToOrderedSlice(rulemap, meta.Keys()), nil

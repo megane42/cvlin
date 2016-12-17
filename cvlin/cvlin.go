@@ -3,13 +3,21 @@ package cvlin
 import (
 	"regexp"
 	"fmt"
+	"io/ioutil"
+	"github.com/pkg/errors"
 	"github.com/megane42/cvlin/cvlin/rule"
 	"github.com/megane42/cvlin/cvlin/subject"
 )
 
 
 func Run(rulePath, subjectPath string) (bool, error) {
-	rule, err := rule.LoadRule(rulePath)
+
+	ruleStr, err := readRuleFile(rulePath)
+	if err != nil {
+		return false, err
+	}
+
+	rules, err := rule.LoadRule(ruleStr)
 	if err != nil {
 		return false, err
 	}
@@ -19,7 +27,7 @@ func Run(rulePath, subjectPath string) (bool, error) {
 		return false, err
 	}
 
-	return validate(rule, subj)
+	return validate(rules, subj)
 }
 
 
@@ -41,4 +49,25 @@ func validate(rules []string, subject [][]string) (bool, error) {
 	}
 
 	return true, nil
+}
+
+
+func readRuleFile(rulePath string) (string, error) {
+	var tomlBytes []byte
+	var err error
+
+	if rulePath == "" {
+		tomlBytes, err = Asset("default_rules.toml")
+		if err != nil {
+			return "", errors.Wrap(err, "Failed to load default rule")
+		}
+
+	} else {
+		tomlBytes, err = ioutil.ReadFile(rulePath)
+		if err != nil {
+			return "", errors.Wrap(err, "Failed to load rule file")
+		}
+	}
+
+	return string(tomlBytes), nil
 }
