@@ -1,10 +1,8 @@
-# cvlin
-
 ![logo](logo.png)
 
 cvlin (síblɪŋ : しぶりん) is CSV Lint tool. CsV LINt.
 
-## How To Use
+# How To Use
 
 * Write rule file in toml format
 
@@ -29,7 +27,7 @@ A02,,200
 $ cvlin -r rule.toml subject.csv
 ```
 
-## Install
+# Install
 
 Just download, unzip and place it in $PATH directory. For example, on Linux:
 
@@ -39,7 +37,7 @@ unzip cvlin-linux-amd64.zip
 mv cvlin-linux-amd64 $HOME/bin/cvlin
 ```
 
-## Rule File
+# Rule File
 
 * Rule file is written in toml format.
     * The left-hand side is the name of column. This is just for documentation.
@@ -49,7 +47,7 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
     * good: `\\d`
     * bad: `\d`
 
-### Embedded Default Rule
+## Embedded Default Rule
 
 * For further portability, you can embed default rule file into the binary.
 * Embedded default rule is used when you invoke cvlin without -r option.
@@ -61,12 +59,12 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
   * `cd $GOPATH/src/github.com/megane42/cvlin`
   * `go-bindata --pkg cvlin -o cvlin/bindata.go default_rules.toml`
 
-## For Developer
+# For Developer
 
-### Test
+## Test
 * `go test github.com/megane42/cvlin/...`
 
-### Contribution
+## Contribution
 
 1. Fork ([https://github.com/megane42/cvlin/fork](https://github.com/megane42/cvlin/fork))
 1. Create a feature branch
@@ -75,18 +73,18 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
 1. Run test suite with the `go test ./...` command and confirm that it passes
 1. Create a new Pull Request
 
-### Release (just for me)
+## Release (just for me)
 1. `go install`
 1. `sh ./build.sh`
 1. `git tag $(cvlin -v)`
 1. `ghr $(cvlin -v) ./bin`
 
-## Author
+# Author
 
 * megane42
     * https://github.com/megane42
     * https://twitter.com/tsdnm
 
-## License
+# License
 
 * MIT
