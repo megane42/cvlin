@@ -1,5 +1,7 @@
 # cvlin
 
+![logo](logo.png)
+
 cvlin (síblɪŋ : しぶりん) is CSV Lint tool. CsV LINt.
 
 ## How To Use
@@ -81,4 +83,10 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
 
 ## Author
 
-[megane42](https://github.com/megane42)
+* megane42
+    * https://github.com/megane42
+    * https://twitter.com/tsdnm
+
+## License
+
+* MIT
