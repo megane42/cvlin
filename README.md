@@ -49,9 +49,10 @@ mv cvlin-linux-amd64 $HOME/bin/cvlin
 
 ### Embedded Default Rule
 
-* If you have build environment of go, you can embed default rule file into the binary.
+* For further portability, you can embed default rule file into the binary.
 * Embedded default rule is used when you invoke cvlin without -r option.
 * How to:
+  * Prepare go build environment
   * `go get -u github.com/jteeuwen/go-bindata/...`
   * `go get github.com/megane42/cvlin/`
   * Write your rule in `default_rules.toml`
