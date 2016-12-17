@@ -17,9 +17,9 @@ func TestRun_versionFlag(t *testing.T) {
 		t.Errorf("Unexpected Status Code: expected %d but got %d", ExitCodeOK, status)
 	}
 
-	expected := fmt.Sprintf("cvlin version %s", Version)
-	if !strings.Contains(errStream.String(), expected) {
-		t.Errorf("Unexpected output: expected %q but got %q", expected, errStream.String(),)
+	expected := fmt.Sprintf("v%s", Version)
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("Unexpected output: expected %q but got %q", expected, outStream.String(),)
 	}
 }
 

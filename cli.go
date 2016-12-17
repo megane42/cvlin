@@ -44,7 +44,7 @@ func (cli *CLI) Run(args []string) int {
 
 	// Show version
 	if version {
-		fmt.Fprintf(cli.errStream, "%s version %s\n", Name, Version)
+		fmt.Fprintf(cli.outStream, "v%s\n", Version)
 		return ExitCodeOK
 	}
 
