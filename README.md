@@ -25,6 +25,22 @@ A02,,200
 ```shell
 # specify rule file with -r or --rule option
 $ cvlin -r rule.toml subject.csv
+Valid.
+```
+
+* If your CSV is invalid (see ID of 2nd row):
+
+```csv
+# id,name,point
+A01,Shibuya Rin,100
+B02,,200
+```
+
+* you get error message
+
+```
+$ cvlin -r rule.toml invalid.csv 
+Invalid. ( line: 1, column: 0, value: B02, rules: A0[0-9] )
 ```
 
 ## Install
