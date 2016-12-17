@@ -23,6 +23,21 @@ func TestLoadRule(t *testing.T) {
 }
 
 
+func TestLoadRuleWithInvalidRegexp(t *testing.T) {
+	toml := `
+    validRule1  = "A0[0-9]"
+    invalidRule = "*"
+    validRule2  = "A0[0-9]"
+    `
+
+	_, err := LoadRule(toml)
+
+	if err == nil {
+		t.Errorf("Failed to raise error.")
+	}
+}
+
+
 func TestConvertToOrderedSlice(t *testing.T) {
 	rulemap := map[string]string {
 		"ccc": "333",
