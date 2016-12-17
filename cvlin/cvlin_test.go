@@ -1,11 +1,16 @@
 package cvlin
 
 import (
+	"regexp"
 	"testing"
 )
 
 func TestValidate(t *testing.T) {
-	rule := []string {`A0[0-9]`, `.*`, `^\d+$`}
+	rule := []*regexp.Regexp {
+		regexp.MustCompile(`A0[0-9]`),
+		regexp.MustCompile(`.*`),
+		regexp.MustCompile(`^\d+$`),
+	}
 
 	subject := [][]string {
 		{"A01", "Shibuya Rin", "100"},
@@ -25,7 +30,11 @@ func TestValidate(t *testing.T) {
 
 func TestValidate_InvalidNumOfRules(t *testing.T) {
 	// 2 rules for 3 cols
-	rule := []string {`A0[0-9]`, `.*`}
+	rule := []*regexp.Regexp {
+		regexp.MustCompile(`A0[0-9]`),
+		regexp.MustCompile(`.*`),
+	}
+
 	subject := [][]string {
 		{"A01", "Shibuya Rin", "100"},
 		{"A02", "", "200"},

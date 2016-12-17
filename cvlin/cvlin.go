@@ -31,7 +31,7 @@ func Run(rulePath, subjectPath string) (bool, error) {
 }
 
 
-func validate(rules []string, subject [][]string) (bool, error) {
+func validate(rules []*regexp.Regexp, subject [][]string) (bool, error) {
 	for j, row := range subject {
 
 		// validate if #rules is match with #columns
@@ -41,8 +41,7 @@ func validate(rules []string, subject [][]string) (bool, error) {
 
 		// validate if a value satisfies a rule
 		for i, col := range row {
-			reg := regexp.MustCompile(rules[i])
-			if !reg.MatchString(col) {
+			if !(*rules[i]).MatchString(col) {
 				return false, fmt.Errorf("Invalid. ( line: %d, column: %d, value: %s, rules: %s )", j, i, col, rules[i])
 			}
 		}

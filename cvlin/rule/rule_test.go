@@ -1,6 +1,7 @@
 package rule
 
 import (
+	"regexp"
 	"testing"
 	"reflect"
 	"io/ioutil"
@@ -9,7 +10,11 @@ import (
 
 func TestLoadRule(t *testing.T) {
 	tomlBytes, _ := ioutil.ReadFile("../../example/rule.toml")
-	expect := []string {`A0[0-9]`, `.*`, `^\d+$`}
+	expect := []*regexp.Regexp {
+		regexp.MustCompile(`A0[0-9]`),
+		regexp.MustCompile(`.*`),
+		regexp.MustCompile(`^\d+$`),
+	}
 
 	result, err := LoadRule(string(tomlBytes))
 

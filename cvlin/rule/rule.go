@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func LoadRule(tomlStr string) ([]string, error) {
+func LoadRule(tomlStr string) ([]*regexp.Regexp, error) {
 	var rulemap map[string]string
 
 	meta, err := toml.Decode(tomlStr, &rulemap)
@@ -15,14 +15,12 @@ func LoadRule(tomlStr string) ([]string, error) {
 	}
 
 	orderedRules := convertToOrderedSlice(rulemap, meta.Keys())
-
-	for _, rule := range orderedRules {
-		if _, err := regexp.Compile(rule); err != nil {
-			return nil, errors.Wrap(err, "The rule file conatins invalid regexp")
-		}
+	validRules, err := convertToSliceOfRegexp(orderedRules)
+	if err != nil {
+		return nil, errors.Wrap(err, "The rule file conatins invalid regexp")
 	}
 
-	return orderedRules, nil
+	return validRules, nil
 }
 
 // Convert a map to a slice which is ordered as same as the original TOML document
@@ -32,4 +30,19 @@ func convertToOrderedSlice(rulemap map[string]string, keys []toml.Key) []string 
 		ordered = append(ordered, rulemap[key[0]])
 	}
 	return ordered
+}
+
+// Convert slice of strings to slice of *regexp.Regexp
+func convertToSliceOfRegexp(rules []string) ([]*regexp.Regexp, error) {
+	validRules := make([]*regexp.Regexp, 0)
+
+	for _, rule := range rules {
+		reg, err := regexp.Compile(rule)
+		if err != nil {
+			return nil, err
+		}
+		validRules = append(validRules, reg)
+	}
+
+	return validRules, nil
 }
