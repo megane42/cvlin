@@ -48,9 +48,8 @@ Invalid. ( line: 1, column: 0, value: B02, rules: A0[0-9] )
 Just download, unzip and place it in $PATH directory. For example, on Linux:
 
 ```shell
-VERSION=1.0.0 wget https://github.com/megane42/cvlin/releases/download/$VERSION/cvlin-linux-amd64.zip
-unzip cvlin-linux-amd64.zip
-mv cvlin-linux-amd64 $HOME/bin/cvlin
+VERSION=v1.0.0; sudo wget https://github.com/megane42/cvlin/releases/download/$VERSION/cvlin-linux-amd64 -O /usr/local/bin/cvlin
+sudo chmod +x /usr/local/bin/cvlin
 ```
 
 ## Rule File
