@@ -98,7 +98,7 @@ sudo chmod +x /usr/local/bin/cvlin
 
 * megane42
     * https://github.com/megane42
-    * https://twitter.com/tsdnm
+    * https://twitter.com/megane42
 
 ## License
 
